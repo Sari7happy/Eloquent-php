@@ -29,8 +29,8 @@ Route::prefix('contacts')
         Route::get('/', 'index')->name('index');
 
         Route::get('/create', 'create')->name('create');
-
-        // Route::get('/', 'store')->name('store');
+// 保存機能
+        Route::post('/', 'store')->name('store');
     });
 
 Route::get('/', function () {
