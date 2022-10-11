@@ -17,20 +17,21 @@ use App\Http\Controllers\ContactFormController;
 // ルート
 Route::get('tests/test', [TestController::class, 'index']);
 
-Route::resource('contacts',ContactFormController:: class);
+// Route::resource('contacts', ContactFormController::class);
 
-Route::get('contacts', [ContactFormController::class, 'index'])->name('contacts.index');
+
 
 Route::prefix('contacts')
     ->middleware(['auth'])
     ->controller(ContactFormController::class)
     ->name('contacts.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
 
+        Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
-// 保存機能
+        // 保存機能
         Route::post('/', 'store')->name('store');
+        Route::get('/{id}','show')->name('show');
     });
 
 Route::get('/', function () {
