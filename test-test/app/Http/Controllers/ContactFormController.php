@@ -14,7 +14,11 @@ class ContactFormController extends Controller
      */
     public function index()
     {
-        return view('contacts.index');
+        // コレクション型としてデータを取れる
+        $contacts=Contactform::select('id','name','title','created_at')
+        ->get();
+
+        return view('contacts.index',compact('contacts'));
     }
 
     /**
@@ -35,6 +39,7 @@ class ContactFormController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         // データベースに繋ぐ
         ContactForm::create([
             'name' => $request->name,
@@ -44,10 +49,8 @@ class ContactFormController extends Controller
             'gender' => $request->gender,
             'age' => $request->age,
             'contact' => $request->contact,
-            
-            
         ]);
-            return to_route('contacts.index');
+        return to_route('contacts.index');
     }
 
     /**
