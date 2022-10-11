@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-           お問い合わせ一覧
+        お問い合わせ一覧
         </h2>
     </x-slot>
 
@@ -10,7 +10,14 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     index<br>
-                    <a href ="{{route('contacts.create')}}" class="text-red-500">新規登録</a>
+                    <a href ="{{route('contacts.create')}}" class="text-orange-500">新規登録</a>
+                    <!-- viewに列を表示 -->
+                    @foreach($contacts as $contact)
+                    {{$contact->id}}
+                    {{$contact->name}}
+                    {{$contact->title}}
+                    {{$contact->created_at}}
+                    @endforeach
                 </div>
             </div>
         </div>
