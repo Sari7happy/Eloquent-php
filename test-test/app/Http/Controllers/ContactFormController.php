@@ -92,7 +92,10 @@ class ContactFormController extends Controller
      */
     public function edit($id)
     {
-        //
+        // 一件のみは単数形でかく
+        $contact =ContactForm::find($id);
+        return view ('contacts.edit',
+        compact('contact'));
     }
 
     /**
