@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactFormController;
-
+use App\Http\Controllers\ShopContactFormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +16,7 @@ use App\Http\Controllers\ContactFormController;
 */
 // ルート
 Route::get('tests/test', [TestController::class, 'index']);
+Route::get('shops', [ShopController::class, 'index']);
 
 // Route::resource('contacts', ContactFormController::class);
 
@@ -34,7 +35,7 @@ Route::prefix('contacts')
         Route::get('/{id}','show')->name('show');
         Route::get('/{id}/edit','edit')->name('edit');
         Route::post('/{id}','update')->name('update');
-        Route::post('/{id}/destroy','deatroy')->name('destroy');
+        Route::post('/{id}/destroy','destroy')->name('destroy');
         
     });
 
